@@ -1,0 +1,65 @@
+/**
+
+
+PaysafecardGenerator is a class that generates Paysafecard codes.
+ /
+class PaysafecardGenerator {
+    /*
+
+Generates a 10€ Paysafecard code.
+ *
+
+@returns {string} A string representing the generated Paysafecard code.
+ */
+generatePaysafecardCode() {
+    // Generate a random 16-digit code.
+    let code = this.generateRandomCode(16);
+// Format the code with hyphens for better readability.
+let formattedCode = this.formatCode(code);
+return formattedCode;
+    }
+
+
+/*
+ * Generates a random code with the specified length.
+ *
+ * @param {number} length - The length of the code to generate.
+ * @returns {string} The randomly generated code.
+ /
+generateRandomCode(length) {
+    let code = “”;
+    const characters = “ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789”;
+for (let i = 0; i < length; i++) {
+    let randomIndex = Math.floor(Math.random() * characters.length);
+    code += characters.charAt(randomIndex);
+}
+
+return code;
+
+}
+/*
+ * Formats the code with hyphens for better readability.
+ *
+ * @param {string} code - The code to format.
+ * @returns {string} The formatted code.
+ /
+formatCode(code) {
+    let formattedCode = “”;
+for (let i = 0; i < code.length; i++) {
+    formattedCode += code.charAt(i);
+
+    if ((i + 1) % 4 === 0 && i !== code.length - 1) {
+        formattedCode += "-";
+    }
+}
+
+return formattedCode;
+
+}
+}
+
+
+// Usage Example for PaysafecardGenerator
+const generator = new PaysafecardGenerator();
+const paysafecardCode = generator.generatePaysafecardCode();
+console.log(Generated Paysafecard code: ${paysafecardCode});
